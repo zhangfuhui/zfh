@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+		
+	<!-- 设置别名 -->
+	<typeAliases>
+		<typeAlias type="com.bawei.entity.Dianying" alias="dianying"/>
+		<typeAlias type="com.bawei.entity.Fenlei" alias="fenlei"/>
+	</typeAliases>
+	
+	<plugins>
+		<plugin interceptor="com.github.pagehelper.PageHelper">
+			<property name="dialect" value="mysql"/>
+		</plugin>
+	</plugins>
+
+	<!-- 加载sql定义文件 -->
+	<mappers>
+		<mapper resource="com/bawei/mapper/DianMapper.xml" />
+	</mappers>
+</configuration>

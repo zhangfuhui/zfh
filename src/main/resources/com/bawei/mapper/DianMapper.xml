@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bawei.mapper.DianDao">
+
+	<select id="findAll" resultType="dianying" parameterType="map">
+		select d.id,d.dname,d.jieshao,d.daoyan,d.startdate,GROUP_CONCAT(f.fname,'')as fname from dianying d,fenlei f,zhong z where z.did=d.id and z.fid=f.id 
+			<if test="dname!=null and dname!=''">
+				and d.dname like concat("%",#{dname},"%")
+			</if>
+		GROUP BY d.id
+	</select>
+	
+	<select id="findfenlei" resultType="fenlei">
+		select id,fname from fenlei
+	</select>
+	
+	<insert id="insertDiany" parameterType="dianying">
+		insert into dianying(dname,jieshao,daoyan,startdate) values(#{dname},#{jieshao},#{daoyan},#{startdate})
+	</insert>
+	
+	<select id="selectOne" resultType="int" parameterType="string">
+		select id from dianying where dname = #{_parameter}
+	</select>
+	
+	<insert id="insertZhong" parameterType="map">
+		insert into zhong(did,fid) values(#{did},#{fid})
+	</insert>
+	
+	<delete id="deleteduo" parameterType="int">
+		delete from dianying where id=${_parameter}
+	</delete>
+	
+	<delete id="deletezhong" parameterType="int">
+		delete from zhong where did=${_parameter}
+	</delete>
+	
+	<select id="selectOneee" parameterType="int" resultType="dianying">
+		select d.id,d.dname,d.jieshao,d.daoyan,d.startdate,GROUP_CONCAT(f.id,'')as fname from dianying d,fenlei f,zhong z where z.did=d.id and z.fid=f.id and d.id=${_parameter} GROUP BY d.id
+	</select>
+	
+	<update id="updateOne" parameterType="dianying">
+		update dianying set dname=#{dname},jieshao=#{jieshao},daoyan=#{daoyan},startdate=#{startdate} where id=#{id}
+	</update>
+	
+	<delete id="deleteOne" parameterType="int">
+		delete from zhong where did=#{_parameter}
+	</delete>
+	
+</mapper>
