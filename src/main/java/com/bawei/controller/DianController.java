@@ -33,6 +33,8 @@ public class DianController {
 		List<Dianying> list = ser.findAll(map);
 		PageInfo<Dianying> page = new PageInfo<Dianying>(list);
 		model.addAttribute("page", page);//将数据存入作用域
+		model.addAttribute("page", page);//将数据存入作用域
+		model.addAttribute("page", page);//将数据存入作用域
 		return "list";//返回到页面
 	}
 	
