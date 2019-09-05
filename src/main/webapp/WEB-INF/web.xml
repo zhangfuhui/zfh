@@ -9,65 +9,33 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
-  
-  <!-- 配置处理乱码的过滤器 -->
   <filter>
-  	<filter-name>filter</filter-name>
-  	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-  	
-  	<!-- 声明项目所要使用的具体的编码集 -->
-  	<init-param>
-  		<param-name>encoding</param-name>
-  		<param-value>UTF-8</param-value>
-  	</init-param>
-  	
-  	<!-- 声明项目ajax所要使用的具体的编码集 -->
-  	<init-param>
-  		<param-name>forceEncoding</param-name>
-  		<param-value>true</param-value>
-  	</init-param>
+    <filter-name>filter</filter-name>
+    <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+      <param-name>forceEncoding</param-name>
+      <param-value>true</param-value>
+    </init-param>
   </filter>
-  
   <filter-mapping>
-  	<filter-name>filter</filter-name>
-  	<servlet-name>springmvc</servlet-name>
+    <filter-name>filter</filter-name>
+    <servlet-name>springmvc</servlet-name>
   </filter-mapping>
-  
-  
-  <!-- 配置前端控制器 -->
   <servlet>
-  	<servlet-name>springmvc</servlet-name>
-  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-  	
-  	<init-param>
-  		<param-name>contextConfigLocation</param-name>
-  		<param-value>classpath:applicationContext.xml</param-value>
-  	</init-param>
-  	
-  	<load-on-startup>1</load-on-startup>
-  	
+    <servlet-name>springmvc</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:applicationContext.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
   </servlet>
-  
-  
   <servlet-mapping>
-  	<servlet-name>springmvc</servlet-name>
-  	<url-pattern>*.do</url-pattern>
-  
+    <servlet-name>springmvc</servlet-name>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 </web-app>
